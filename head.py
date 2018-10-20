@@ -4,9 +4,10 @@ class User:
      only storing their name and birthdayself.
      But soon we will store an uncomfortable
      amount of user information."""
-    def __init__(self, full_name, birthday):
+    def __init__(self, full_name, birthday, poster):
         self.name = full_name
         self.birthday = birthday # yyyymmdd
+        self.poster = poster # picture link
         # Extract first and last names
         name_pieces = full_name.split(" ")
         self.first_name = name_pieces[0]
