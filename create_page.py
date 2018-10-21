@@ -1,37 +1,6 @@
 import webbrowser
 import os
 import re
-"""    <div class="row jumbotron img-responsive">
-      <img src="img/Kitchen3.jpg" class="img-responsive img-rounded img-fluid img-thumbnail"
-      alt="cover page" />
-    </div>
-    <div class="row text-muted">
-      <h2>Our Smart Solutions</h2>
-    </div>
-    <div class="row img-responsive text-center">
-      <div class="col-md-4">
-        <img src="img/mobapp.jpg" class="img-thumbnail img-responsive img-rounded" alt="mobile app"/>
-        <h3 class="text-uppercase center">Mobile Application</h3>
-        <p>
-          this is a paragraph
-        </p>
-      </div>
-      <div class="col-md-4">
-        <img src="img/img-2.jpg" class="img-thumbnail img-responsive img-rounded" alt="mobile app"/>
-        <h3 class="text-uppercase">Security Camers</h3>
-        <p>
-          this is a paragraph
-        </p>
-      </div>
-      <div class="col-md-4">
-        <img src="img/img-3.jpg" class="img-thumbnail img-responsive img-rounded" alt="mobile app"/>
-        <h3 class="text-uppercase">Street Lighting</h3>
-        <p>
-          this is a paragraph
-        </p>
-      </div>
-    </div>"""
-
 # The main page layout and title bar
 main_page = '''
 <!DOCTYPE html>
@@ -47,10 +16,26 @@ main_page = '''
    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,500&amp;subset=greek"
    rel="stylesheet">
+
 </head>
 
 <body>
   <div class="container">
+      <div class="row jumbotron img-responsive">
+        <div class="col-md-4">
+          <img src="https://i.pinimg.com/originals/23/75/a5/2375a5f598107e9b4d663fc34c83ece5.png" class="title-logo img-fluid img-responsive"/>
+        </div>
+        <div class="col-md-4">
+          <!-- TODO: add login tabs -->
+        </div>
+        <div class="col-md-4">
+          <h1 class="title-super text-right text-uppercase text-thin">Celebrity Home</h1>
+          <h4 class="text-right">Famous Celebrities Inspirational Quotes</h4>
+        </div>
+      </div>
+      <div class="row">
+
+
     <div class="row jumbotron img-responsive">
       <hr>
     </div>
@@ -62,31 +47,37 @@ main_page = '''
 # A single Celebrity entry html template
 profile_content = '''
     <div class="col-md-6 col-lg-4 text-center" data-toggle="modal" data-target="#trailer">
-        <img src="{}" width="342" height="342">
+        <img src="{}" class="img-rounded img-fluid" width="342" height="342" alt="cover page">
         <h2>{}</h2>
         <p>Age: {}</p>
+        <p>{}</p>
     </div>
                 '''
 footer = '''
         <div class="col-md-8">
           <blockquote>
-            <p>“The opportunity we have is to build a secure, intelligent platform that solves some of the world’s greatest problems at scale. That’s what’s possible with hundreds of billions of connections and the capabilities that we can deliver together.”</p>
+            <p>The opportunity we have is to build a secure,
+            intelligent platform that solves some of the worlds
+            greatest problems at scale. Thats whats possible with
+            hundreds of billions of connections and the capabilities
+            that we can deliver together.</p>
             <footer>Hany Salama</footer>
           </blockquote>
         </div>
 </body>
 </html>
-'''
+        '''
 
 
 def create_profile_page(users):
     f = open('profile.html', 'w')
-    
-    rendered_content = profile_content.format(users[0].poster, users[0].name, users[0].age())
-    rendered_content_1 = profile_content.format(users[1].poster, users[1].name, users[1].age())
-    rendered_content_2 = profile_content.format(users[2].poster, users[2].name, users[2].age())
-    rendered_content_3 = profile_content.format(users[3].poster, users[3].name, users[3].age())
-    rendered_content_4 = profile_content.format(users[4].poster, users[4].name, users[4].age())
 
-    f.write(main_page + rendered_content + rendered_content_1 + rendered_content_2 + rendered_content_3 + rendered_content_4 + footer)
+    rendered_content = profile_content.format(users[0].poster, users[0].name, users[0].age(), users[0].quote)
+    rendered_content_1 = profile_content.format(users[1].poster, users[1].name, users[1].age(), users[1].quote)
+    rendered_content_2 = profile_content.format(users[2].poster, users[2].name, users[2].age(), users[2].quote)
+    rendered_content_3 = profile_content.format(users[3].poster, users[3].name, users[3].age(), users[3].quote)
+    rendered_content_4 = profile_content.format(users[4].poster, users[4].name, users[4].age(), users[4].quote)
+    rendered_content_5 = profile_content.format(users[5].poster, users[5].name, users[5].age(), users[5].quote)
+
+    f.write(main_page + rendered_content + rendered_content_1 + rendered_content_2 + rendered_content_3 + rendered_content_4 + rendered_content_5 + footer)
     f.close()
